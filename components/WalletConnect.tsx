@@ -7,8 +7,8 @@ import { Button } from 'antd';
 export default function WalletConnect() {
   const [account, setAccount] = useState<string | null>(null); // 账户地址是字符串或null
   const [provider, setProvider] = useState<ethers.BrowserProvider | null>(null); // provider类型
+  const [balance, setBalance] = useState<string | null>(null); // 新增余额状态
   const [error, setError] = useState<string>(''); // 错误消息是字符串
-
   // 检查是否安装了MetaMask并连接钱包
   const checkWallet = async () => {
     if (typeof window.ethereum !== 'undefined') {
@@ -19,6 +19,9 @@ export default function WalletConnect() {
 
         setAccount(accounts[0]); // 保存第一个账户地址
         setProvider(web3Provider); // 保存provider实例
+        // 获取账户余额
+        const balance = await web3Provider.getBalance(accounts[0]);
+        setBalance(ethers.formatEther(balance)); // 将余额转换为以太单位
       } catch (err: unknown) {
         // 类型断言错误对象
         setError('连接钱包失败: ' + (err instanceof Error ? err.message : String(err)));
@@ -57,9 +60,12 @@ export default function WalletConnect() {
     <div>
       <h1>shosho的Web3钱包连接</h1>
       {!account ? (
-         <Button type="primary"  onClick={checkWallet}>连接钱包</Button>       
+         <Button type="primary"  onClick={checkWallet}>连接钱包</Button>
       ) : (
-        <p>已连接账户: {account}</p>
+        <div>
+          <p>已连接账户: {account}</p>
+          <p>账户余额: {balance ? `${balance} ETH` : '加载中...'}</p>
+        </div>
       )}
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
