@@ -9,6 +9,10 @@ export default function Home() {
         <Link href="/onePage">
             1.链接web3钱包
         </Link>
+        <Link href="/twoPage">
+            2. 切换网络链路
+        </Link>
+        
       </Card>
     </div>
   );
