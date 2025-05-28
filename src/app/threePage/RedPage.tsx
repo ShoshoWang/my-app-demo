@@ -4,7 +4,6 @@ import { wagmiContractConfig } from './contracts';
 import { formatEther, parseEther } from 'viem';
 import { Card, Typography, Descriptions, Divider, Button, Input, message, Space, Alert, Tooltip, Avatar, List } from 'antd';
 import { useState, useEffect } from 'react';
-import { UserOutlined } from '@ant-design/icons';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -141,7 +140,7 @@ function RedContractAnalysis() {
     }
   };
 
-  // 虚拟用户抢红包
+  // 三个用户抢红包
   const handleVirtualUserGrab = (userId: number) => {
     // 检查红包是否可抢
     if (!redPacketCount || Number(redPacketCount) <= 0 || !totalAmount || Number(totalAmount) <= 0) {
@@ -156,7 +155,7 @@ function RedContractAnalysis() {
       return;
     }
 
-    // 模拟抢红包过程
+    // 抢红包过程
     messageApi.loading(`${user?.name}正在抢红包...`, 1.5);
     
     // 模拟延迟
@@ -313,7 +312,7 @@ function RedContractAnalysis() {
             />
           </Space>
 
-          <Divider orientation="left">虚拟用户抢红包</Divider>
+          <Divider orientation="left">下面用户抢红包</Divider>
           <Space direction="vertical" style={{ width: '100%', marginTop: '20px' }}>
             <List
               itemLayout="horizontal"
