@@ -12,7 +12,9 @@ export default function Home() {
         <Link href="/twoPage">
             2. 切换网络链路
         </Link>
-        
+        <Link href="/threePage">
+            3. 发红包
+        </Link>
       </Card>
     </div>
   );

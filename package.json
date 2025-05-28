@@ -6,19 +6,23 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.2",
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
-    "@tanstack/react-query": "^5.67.1",
+    "@tanstack/react-query": "^5.77.2",
     "antd": "^5.24.2",
+    "connectkit": "^1.9.0",
     "ethers": "^6.13.5",
     "next": "15.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "viem": "^2.23.6",
-    "wagmi": "^2.14.12"
+    "viem": "^2.30.1",
+    "wagmi": "^2.15.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -26,13 +30,20 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.2.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
   "engines": {
-    "node": "18.x",
+    "node": "^18.20.6",
     "npm": "9.6.7"
   }
 }
